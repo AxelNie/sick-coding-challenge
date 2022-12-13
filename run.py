@@ -25,7 +25,8 @@ def write_png(image, filename):
 
 def compile_code():
     subprocess.check_output(
-        ["g++", "main.cpp", "-std=c++17", "-O3", "-o", "main"]
+        ["g++", "main.cpp", "-std=c++17", "-O3", "-o", "main"],
+        shell=True
     )
 
 
@@ -74,7 +75,8 @@ def main():
         print("Solution is correct! Image matches with ground truth!")
     else:
         print("Images don't quite match up.")
-        incorrect_mask = (ground_truth != converted_image).astype(np.uint8) * 255
+        incorrect_mask = (ground_truth != converted_image).astype(
+            np.uint8) * 255
         print("Writing incorrect pixel image (the color of each pixel indicates which color channel is incorrect, black means correct)")
         write_png(incorrect_mask, "incorrect_pixels.png")
 

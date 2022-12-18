@@ -1,0 +1,29 @@
+﻿  main.cpp
+  The contents of <execution> are available only with C++17 or later.
+C:\Projekt\sick-coding-challenge\main.cpp(74,14): error C2039: 'execution': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\algorithm(40): message : see declaration of 'std'
+C:\Projekt\sick-coding-challenge\main.cpp(74,14): error C3083: 'execution': the symbol to the left of a '::' must be a type
+C:\Projekt\sick-coding-challenge\main.cpp(74,25): error C2039: 'par': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\algorithm(40): message : see declaration of 'std'
+C:\Projekt\sick-coding-challenge\main.cpp(74,28): error C2065: 'par': undeclared identifier
+C:\Projekt\sick-coding-challenge\main.cpp(75,14): error C2672: 'std::begin': no matching overloaded function found
+C:\Projekt\sick-coding-challenge\main.cpp(75,31): error C2893: Failed to specialize function template 'unknown-type std::begin(_Container &)'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xutility(1840): message : see declaration of 'std::begin'
+C:\Projekt\sick-coding-challenge\main.cpp(75,31): message : With the following template arguments:
+C:\Projekt\sick-coding-challenge\main.cpp(75,31): message : '_Container=unsigned char *'
+C:\Projekt\sick-coding-challenge\main.cpp(75,31): error C2784: 'const _Elem *std::begin(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'unsigned char *'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\initializer_list(55): message : see declaration of 'std::begin'
+C:\Projekt\sick-coding-challenge\main.cpp(76,14): error C2672: 'std::end': no matching overloaded function found
+C:\Projekt\sick-coding-challenge\main.cpp(76,29): error C2893: Failed to specialize function template 'unknown-type std::end(_Container &)'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xutility(1850): message : see declaration of 'std::end'
+C:\Projekt\sick-coding-challenge\main.cpp(76,29): message : With the following template arguments:
+C:\Projekt\sick-coding-challenge\main.cpp(76,29): message : '_Container=unsigned char *'
+C:\Projekt\sick-coding-challenge\main.cpp(76,29): error C2784: 'const _Elem *std::end(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'unsigned char *'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\initializer_list(60): message : see declaration of 'std::end'
+C:\Projekt\sick-coding-challenge\main.cpp(77,12): error C2061: syntax error: identifier 'T'
+C:\Projekt\sick-coding-challenge\main.cpp(79,13): error C2065: 'val': undeclared identifier
+C:\Projekt\sick-coding-challenge\main.cpp(79,20): error C2065: 'divisor': undeclared identifier
+C:\Projekt\sick-coding-challenge\main.cpp(85,26): error C2955: 'Pixel': use of class template requires template argument list
+C:\Projekt\sick-coding-challenge\main.cpp(25): message : see declaration of 'Pixel'
+C:\Projekt\sick-coding-challenge\main.cpp(85,24): error C2512: 'Pixel': no appropriate default constructor available
+C:\Projekt\sick-coding-challenge\main.cpp(25,1): message : see declaration of 'Pixel'

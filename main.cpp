@@ -3,6 +3,9 @@
 #include <fstream>
 #include <cstring>
 #include <cmath>
+#include <vector>
+#include <algorithm>
+#include <execution>
 
 // Name:
 // Email:
@@ -17,7 +20,7 @@ void perform_operation(unsigned char *input_image, unsigned char *output_image, 
 unsigned char getMostCommonNeighbour(const unsigned char *input_image, int i, int ksize);
 
 unsigned char getPixelAtPos(int x, int y, int offset, const unsigned char *input_image);
-
+template <typename T>
 class Pixel
 {
 public:
@@ -67,6 +70,9 @@ void perform_operation(unsigned char *input_image, unsigned char *output_image, 
         unsigned char most_common_pixel = getMostCommonNeighbour(input_image, i, ksize);
         output_image[i] = most_common_pixel;
     }
+
+    std::for_each(std::begin(input_image), std::end(input_image), [](int x)
+                  { std::cout << x << " "; });
 }
 
 unsigned char getMostCommonNeighbour(const unsigned char *input_image, int i, int ksize)

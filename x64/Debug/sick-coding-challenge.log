@@ -1,2 +1,8 @@
 ﻿  main.cpp
-  sick-coding-challenge.vcxproj -> C:\Projekt\sick-coding-challenge\x64\Debug\sick-coding-challenge.exe
+  The contents of <execution> are available only with C++17 or later.
+C:\Projekt\sick-coding-challenge\main.cpp(69,25): error C2039: 'execution': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\vector(24): message : see declaration of 'std'
+C:\Projekt\sick-coding-challenge\main.cpp(69,25): error C3083: 'execution': the symbol to the left of a '::' must be a type
+C:\Projekt\sick-coding-challenge\main.cpp(69,36): error C2039: 'par_unseq': is not a member of 'std'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\vector(24): message : see declaration of 'std'
+C:\Projekt\sick-coding-challenge\main.cpp(69,45): error C2065: 'par_unseq': undeclared identifier

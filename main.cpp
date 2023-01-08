@@ -3,6 +3,9 @@
 #include <fstream>
 #include <cstring>
 #include <cmath>
+#include <algorithm>
+#include <vector>
+#include <execution>
 
 // Name:
 // Email:
@@ -55,6 +58,9 @@ int main(int argc, char **argv)
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
     std::cout << duration.count() << std::endl;
 
+    // std::cout << "Press enter to exit..." << std::endl;
+    // std::cin.get();
+
     return 0;
 }
 
@@ -62,11 +68,12 @@ void perform_operation(unsigned char *input_image, unsigned char *output_image, 
 {
     memcpy(output_image, input_image, HEIGHT * WIDTH * 3);
 
-    for (int i = 0; i < (HEIGHT * WIDTH * 3); i++)
-    {
-        unsigned char most_common_pixel = getMostCommonNeighbour(input_image, i, ksize);
-        output_image[i] = most_common_pixel;
-    }
+    std::size_t index = 0;
+    std::for_each(std::execution::par_unseq, input_image, input_image + (HEIGHT * WIDTH * 3), [&](unsigned char input_pixel)
+                  {
+            output_image[index] = getMostCommonNeighbour(input_image, index, ksize);
+
+            ++index; });
 }
 
 unsigned char getMostCommonNeighbour(const unsigned char *input_image, int i, int ksize)
@@ -76,6 +83,7 @@ unsigned char getMostCommonNeighbour(const unsigned char *input_image, int i, in
 
     unsigned char most_common_count = 0;
     unsigned char most_common_value = 0;
+
     for (int i = -ksize; i <= ksize; i++)
     {
         for (int y = -ksize; y <= ksize; y++)
@@ -100,6 +108,7 @@ unsigned char getMostCommonNeighbour(const unsigned char *input_image, int i, in
             }
         }
     }
+
     return most_common_value;
 }
 

@@ -44,9 +44,6 @@ def run_code():
 def main():
     image = imageio.imread(IMAGE_PATH)
     height, width, _ = image.shape
-    if not os.path.isfile("baboon_buf.dat"):
-        print("Converting image to buffer...")
-        convert_image(image, "baboon_buf.dat")
 
     print("Compiling...")
     try:

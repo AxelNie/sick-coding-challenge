@@ -1,15 +1,12 @@
-#include <iostream>
+#include <algorithm>
 #include <chrono>
 #include <fstream>
-#include <cstring>
-#include <cmath>
-#include <algorithm>
+#include <iostream>
 #include <vector>
-#include <execution>
 
-// Name:
-// Email:
-// Phone number (optional):
+// Name: Axel Nielsen
+// Email: axel.nie17@gmail.com
+// Phone number (optional): 0722232417
 
 const int HEIGHT = 512;
 const int WIDTH = 512;
@@ -58,9 +55,6 @@ int main(int argc, char **argv)
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
     std::cout << duration.count() << std::endl;
 
-    // std::cout << "Press enter to exit..." << std::endl;
-    // std::cin.get();
-
     return 0;
 }
 
@@ -69,7 +63,7 @@ void perform_operation(unsigned char *input_image, unsigned char *output_image, 
     memcpy(output_image, input_image, HEIGHT * WIDTH * 3);
 
     std::size_t index = 0;
-    std::for_each(std::execution::par_unseq, input_image, input_image + (HEIGHT * WIDTH * 3), [&](unsigned char input_pixel)
+    std::for_each(input_image, input_image + (HEIGHT * WIDTH * 3), [&](unsigned char input_pixel)
                   {
             output_image[index] = getMostCommonNeighbour(input_image, index, ksize);
 
@@ -91,20 +85,11 @@ unsigned char getMostCommonNeighbour(const unsigned char *input_image, int i, in
             unsigned char current_value = getPixelAtPos(currentPixel.x + i, currentPixel.y + y, currentPixel.ch, input_image);
             freq_table[current_value] += 1;
             unsigned char current_count = freq_table[current_value];
-
             // If current pixel is more common, update most common
-            if (current_count > most_common_count)
+            if (current_count > most_common_count || (current_count == most_common_count && current_value < most_common_value))
             {
                 most_common_count = current_count;
                 most_common_value = current_value;
-            }
-            else if (current_count == most_common_count)
-            {
-                if (current_value < most_common_value)
-                {
-                    most_common_count = current_count;
-                    most_common_value = current_value;
-                }
             }
         }
     }
@@ -114,16 +99,11 @@ unsigned char getMostCommonNeighbour(const unsigned char *input_image, int i, in
 
 unsigned char getPixelAtPos(int x, int y, int ch, const unsigned char *input_image)
 {
-    int index_in_color_channel = y * WIDTH + x;
-    // int index_global = index_in_color_channel * 3 + offset;
-    int index_global = HEIGHT * WIDTH * ch + y * WIDTH + x;
+    if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
+    {
+        return 0;
+    }
 
-    if (y < 0 || x < 0 || x > WIDTH - 1 || y > HEIGHT - 1)
-    {
-        return 0; // If pixel is outside of image
-    }
-    else
-    {
-        return input_image[index_global];
-    }
+    int index = (ch * HEIGHT * WIDTH) + (y * WIDTH) + x;
+    return input_image[index];
 }
